@@ -19,6 +19,11 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class ValidatorTests {
 
+	public static String constant = "constant";
+	
+	
+	
+	
     private Validator createValidator() {
         LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
         localValidatorFactoryBean.afterPropertiesSet();
@@ -41,6 +46,11 @@ public class ValidatorTests {
         ConstraintViolation<Person> violation = constraintViolations.iterator().next();
         assertThat(violation.getPropertyPath().toString()).isEqualTo("firstName");
         assertThat(violation.getMessage()).isEqualTo("must not be empty");
+    }
+    
+    @Test
+    public void shouldFail() {
+    	throw new RuntimeException();
     }
 
 }
